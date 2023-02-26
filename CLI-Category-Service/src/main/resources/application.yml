@@ -1,0 +1,42 @@
+#set application name
+spring:
+  application:
+    name: category-service
+  profiles:
+    active:
+    - dev
+
+#kafka consumer and producer properties  
+  kafka:
+    consumer:
+      bootstrap-servers:
+      - localhost:9092
+    producer:
+      bootstrap-servers:
+      - localhost:9092  
+        
+#change port number of your application                      
+server:
+  port: 7070
+
+#generated log file on specified location 
+logging:
+ file:
+  name: C:/app/log Files/Category-Service/DEBUG/category_service.log
+ #pattern:
+    #console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+    #file: "(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} (%5p) (${PID:- }){magenta} (---){faint} ([%15.15t]){faint} (%-40.40logger{39}){cyan} (:){faint} %m%n%wEx"
+#define log level 
+ level:
+    com.cli.ecart.*: DEBUG 
+       
+ 
+#enable actautor. Actuator is subproject of our spring framework ,  it describe health
+#information of your running application  
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+  
